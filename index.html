@@ -15,30 +15,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--crema);color:var(--texto)
 .brand-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--rosa),var(--rosa-suave));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;color:white;font-size:18px;font-weight:600;flex-shrink:0;}
 .brand-name{font-family:'Playfair Display',serif;font-size:19px;font-weight:600;letter-spacing:-0.3px;}
 .brand-tagline{font-size:11px;color:var(--texto-suave);margin-top:1px;}
-.header-right{display:flex;align-items:center;gap:8px;}
-.cart-btn{cursor:pointer;background:var(--rosa-claro);border:1.5px solid var(--borde);border-radius:50px;padding:8px 14px;display:flex;align-items:center;gap:7px;font-size:13px;font-weight:500;color:var(--rosa);}
-.cart-count{background:var(--rosa);color:white;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;}
-.admin-toggle{cursor:pointer;background:none;border:1.5px solid var(--borde);border-radius:50px;padding:8px 12px;font-size:12px;color:var(--texto-suave);font-family:'DM Sans',sans-serif;}
 
-/* HERO & FILTROS */
-.hero{max-width:700px;margin:20px auto 0;padding:0 16px;}
-.hero-card{background:linear-gradient(120deg,#E8637A 0%,#C9964A 100%);border-radius:20px;padding:28px 28px 24px;color:white;position:relative;overflow:hidden;}
-.hero-card::before{content:'✦';position:absolute;right:24px;top:20px;font-size:64px;opacity:.10;}
-.hero-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:600;line-height:1.25;margin-bottom:8px;}
-.hero-wa{display:inline-flex;align-items:center;gap:7px;margin-top:16px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:50px;padding:8px 16px;font-size:13px;font-weight:500;color:white;cursor:pointer;text-decoration:none;}
-.filter-section{max-width:700px;margin:20px auto 0;padding:0 16px;}
-.filter-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;}
-.filter-row::-webkit-scrollbar{display:none;}
-.filter-chip{flex-shrink:0;padding:7px 16px;border-radius:50px;font-size:13px;border:1.5px solid var(--borde);background:var(--blanco);color:var(--texto-suave);cursor:pointer;white-space:nowrap;}
-.filter-chip.active{background:var(--rosa);color:white;border-color:var(--rosa);}
-
-/* GRID DE PRODUCTOS */
+/* GRID & CARDS */
 .products-section{max-width:700px;margin:20px auto 0;padding:0 16px;}
 .products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
 @media(min-width:500px){.products-grid{grid-template-columns:repeat(3,1fr);}}
 .product-card{background:var(--blanco);border-radius:16px;border:1.5px solid var(--borde);overflow:hidden;position:relative;}
 .product-card.hidden{display:none;}
-.product-badge{position:absolute;top:10px;left:10px;color:white;font-size:10px;font-weight:500;padding:3px 8px;border-radius:20px;z-index:2;}
 .product-img-wrap{height:120px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#f9f9f9;}
 .product-img-wrap img{width:100%;height:100%;object-fit:cover;}
 .product-body{padding:10px 12px 12px;}
@@ -46,153 +29,116 @@ body{font-family:'DM Sans',sans-serif;background:var(--crema);color:var(--texto)
 .product-price{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:var(--rosa);margin-bottom:10px;}
 .add-btn{width:100%;padding:9px 0;background:var(--rosa-claro);border:1.5px solid var(--rosa-suave);border-radius:10px;font-size:12px;font-weight:500;color:var(--rosa);cursor:pointer;}
 
+/* HERO */
+.hero{max-width:700px;margin:20px auto 0;padding:0 16px;}
+.hero-card{background:linear-gradient(120deg,#E8637A 0%,#C9964A 100%);border-radius:20px;padding:28px;color:white;position:relative;overflow:hidden;}
+.hero-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:600;}
+.hero-wa{display:inline-flex;align-items:center;gap:7px;margin-top:16px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);border-radius:50px;padding:8px 16px;color:white;text-decoration:none;font-size:13px;}
+
 /* ADMIN PANEL */
 .admin-panel{display:none;max-width:700px;margin:0 auto;padding:0 16px 100px;}
 .admin-panel.active{display:block;}
-.admin-header{display:flex;align-items:center;justify-content:space-between;padding:20px 0;}
-.admin-tabs{display:flex;gap:0;border-bottom:1.5px solid var(--borde);margin-bottom:20px;}
-.admin-tab{padding:10px 16px;font-size:13px;font-weight:500;cursor:pointer;border-bottom:2.5px solid transparent;color:var(--texto-suave);}
-.admin-tab.active{color:var(--rosa);border-bottom-color:var(--rosa);}
+.admin-tabs{display:flex;border-bottom:1.5px solid var(--borde);margin-bottom:20px;}
+.admin-tab{padding:12px 16px;font-size:13px;cursor:pointer;color:var(--texto-suave);}
+.admin-tab.active{color:var(--rosa);border-bottom:2.5px solid var(--rosa);}
 .admin-tab-content{display:none;}
 .admin-tab-content.active{display:block;}
 
-/* FORMULARIOS ADMIN */
-.add-product-form{background:var(--blanco);border-radius:16px;border:1.5px solid var(--borde);padding:20px;margin-bottom:16px;}
-.field-full{margin-bottom:10px;}
-.field-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;}
-.field-label{font-size:11px;color:var(--texto-suave);margin-bottom:4px;display:block;text-transform:uppercase;}
-.field-input{width:100%;padding:10px 12px;border:1.5px solid var(--borde);border-radius:10px;font-size:13px;font-family:'DM Sans',sans-serif;background:var(--crema);outline:none;}
-.foto-upload{display:flex;align-items:center;gap:10px;}
-.foto-preview-wrap{width:56px;height:56px;border-radius:10px;background:var(--rosa-claro);display:flex;align-items:center;justify-content:center;border:1.5px solid var(--borde);overflow:hidden;}
-.foto-preview-wrap img{width:100%;height:100%;object-fit:cover;}
-.foto-btn{flex:1;padding:10px 0;background:var(--crema);border:1.5px dashed var(--rosa-suave);border-radius:10px;font-size:12px;color:var(--rosa);cursor:pointer;}
-
-/* LISTA PRODUCTOS ADMIN */
+/* LISTA ADMIN */
 .admin-product-item{background:var(--blanco);border-radius:14px;border:1.5px solid var(--borde);padding:14px;margin-bottom:10px;}
 .item-top{display:flex;align-items:center;gap:12px;}
-.item-thumb{width:48px;height:48px;border-radius:10px;background:var(--rosa-claro);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.item-thumb{width:48px;height:48px;border-radius:10px;overflow:hidden;background:var(--rosa-claro);display:flex;align-items:center;justify-content:center;}
 .item-thumb img{width:100%;height:100%;object-fit:cover;}
 .item-info{flex:1;min-width:0;}
-.item-name{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.item-actions{display:flex;align-items:center;gap:6px;}
-.toggle-sw{cursor:pointer;width:38px;height:20px;border-radius:20px;background:#ddd;position:relative;transition:0.3s;border:none;}
+.item-actions{display:flex;align-items:center;gap:8px;}
+.item-edit-form{display:none;margin-top:15px;padding-top:15px;border-top:1px solid var(--borde);}
+.item-edit-form.open{display:block;}
+
+/* FORM ELEMENTS */
+.field-full{margin-bottom:10px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;}
+.field-label{font-size:11px;color:var(--texto-suave);text-transform:uppercase;margin-bottom:4px;display:block;}
+.field-input{width:100%;padding:10px;border:1.5px solid var(--borde);border-radius:10px;font-size:13px;outline:none;background:var(--crema);}
+.primary-btn{width:100%;padding:13px;background:var(--rosa);color:white;border:none;border-radius:12px;font-size:14px;font-weight:500;cursor:pointer;}
+.toggle-sw{width:38px;height:20px;border-radius:20px;background:#ddd;position:relative;border:none;cursor:pointer;transition:0.3s;}
 .toggle-sw.on{background:var(--verde-wa);}
 .toggle-sw::after{content:'';position:absolute;width:14px;height:14px;background:white;border-radius:50%;top:3px;left:3px;transition:0.3s;}
 .toggle-sw.on::after{left:21px;}
-.expand-btn, .delete-btn{background:none;border:1.5px solid var(--borde);border-radius:8px;padding:5px 8px;font-size:11px;cursor:pointer;}
-.delete-btn{border-color:#FECACA;color:var(--rojo);}
+.icon-btn{background:none;border:1.5px solid var(--borde);border-radius:8px;padding:5px 8px;cursor:pointer;font-size:12px;}
 
-/* CATEGORIAS LISTA */
-.cat-item{background:var(--blanco);border-radius:12px;border:1.5px solid var(--borde);padding:12px;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
-
-/* CARRITO & OTROS */
-.cart-panel{position:fixed;bottom:0;left:0;right:0;z-index:200;transform:translateY(100%);transition:0.3s;}
-.cart-panel.open{transform:translateY(0);}
-.cart-inner{background:var(--blanco);border-radius:24px 24px 0 0;padding:20px 20px 32px;max-width:700px;margin:0 auto;box-shadow:0 -4px 24px rgba(0,0,0,0.12);}
-.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--texto);color:white;padding:10px 18px;border-radius:50px;font-size:13px;z-index:500;opacity:0;transition:0.3s;pointer-events:none;}
-.toast.show{opacity:1;}
-.primary-btn{width:100%;padding:13px 0;background:var(--rosa);color:white;border:none;border-radius:12px;font-size:14px;font-weight:500;cursor:pointer;}
-.admin-login{display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.4);align-items:center;justify-content:center;}
-.admin-login.open{display:flex;}
-.login-box{background:var(--blanco);border-radius:20px;padding:32px 28px;width:300px;text-align:center;}
 #catalogoView.hidden{display:none;}
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--texto);color:white;padding:10px 20px;border-radius:50px;opacity:0;transition:0.3s;z-index:1000;}
+.toast.show{opacity:1;}
 </style>
 </head>
 <body>
 
 <header class="site-header">
-  <div class="header-inner">
-    <div class="brand-block">
-      <div class="brand-avatar">M</div>
-      <div><div class="brand-name">Marleny</div><div class="brand-tagline">Tienda · Entrenamiento · Bienestar</div></div>
-    </div>
-    <div class="header-right">
-      <button class="admin-toggle" onclick="openAdminLogin()">⚙ Admin</button>
-      <div class="cart-btn" onclick="toggleCart()">
-        Pedido <div class="cart-count" id="cartCount">0</div>
-      </div>
-    </div>
-  </div>
+  <div class="header-inner">
+    <div class="brand-block">
+      <div class="brand-avatar">M</div>
+      <div><div class="brand-name">Marleny</div><div class="brand-tagline">Tienda · Entrenamiento · Bienestar</div></div>
+    </div>
+    <div class="header-right">
+      <button class="icon-btn" onclick="openAdminLogin()" style="border-radius:50px; padding:8px 15px;">⚙ Admin</button>
+      <div class="add-btn" onclick="toggleCart()" style="padding:8px 15px; border-radius:50px; font-size:13px; width:auto;">🛒 <span id="cartCount">0</span></div>
+    </div>
+  </div>
 </header>
 
 <div id="catalogoView">
-  <section class="hero">
-    <div class="hero-card">
-      <div class="hero-title">Productos de calidad<br>para tu bienestar</div>
-      <div class="hero-sub">Selecciona lo que quieres y arma tu pedido ✨</div>
-      <a class="hero-wa" href="https://wa.me/573215049269" target="_blank">Escríbeme directo</a>
-    </div>
-  </section>
-  <section class="filter-section"><div class="filter-row" id="filterRow"></div></section>
-  <section class="products-section">
-    <div class="products-grid" id="productsGrid"></div>
-  </section>
-  <div class="site-footer">Desarrollada por Vibras Positivas HM — Derechos Reservados.</div>
+  <section class="hero">
+    <div class="hero-card">
+      <div class="hero-title">Productos de calidad<br>para tu bienestar</div>
+      <a class="hero-wa" href="https://wa.me/573215049269" target="_blank">Escríbeme directo</a>
+    </div>
+  </section>
+  <div class="products-section">
+    <div class="products-grid" id="productsGrid"></div>
+  </div>
+  <div style="text-align:center; padding:40px; font-size:11px; color:#bbb;">Desarrollada por Vibras Positivas HM — © 2026</div>
 </div>
 
 <div class="admin-panel" id="adminPanel">
-  <div class="admin-header">
-    <div class="admin-title">Mi tienda ✨</div>
-    <button class="admin-exit" onclick="exitAdmin()">← Ver catálogo</button>
-  </div>
-  <div class="admin-tabs">
-    <div class="admin-tab active" onclick="switchTab('productos',this)">Productos</div>
-    <div class="admin-tab" onclick="switchTab('nuevo',this)">+ Nuevo</div>
-    <div class="admin-tab" onclick="switchTab('categorias',this)">Categorías</div>
-  </div>
+  <div style="display:flex; justify-content:space-between; align-items:center; padding:20px 0;">
+    <h3>Mi tienda ✨</h3>
+    <button class="icon-btn" onclick="exitAdmin()">← Volver</button>
+  </div>
+  <div class="admin-tabs">
+    <div class="admin-tab active" onclick="switchTab('productos',this)">Productos</div>
+    <div class="admin-tab" onclick="switchTab('nuevo',this)">+ Nuevo</div>
+  </div>
 
-  <div class="admin-tab-content active" id="tab-productos">
-    <div id="adminProductList"></div>
-  </div>
+  <div class="admin-tab-content active" id="tab-productos">
+    <div id="adminProductList"></div>
+  </div>
 
-  <div class="admin-tab-content" id="tab-nuevo">
-    <div class="add-product-form">
-      <div class="field-full">
-        <label class="field-label">Foto</label>
-        <div class="foto-upload">
-          <div class="foto-preview-wrap" id="newProdPreview">📦</div>
-          <button type="button" class="foto-btn" onclick="document.getElementById('newProdFile').click()">📷 Subir foto</button>
-          <input type="file" accept="image/*" id="newProdFile" style="display:none" onchange="handleNewPhoto(this)">
-        </div>
-      </div>
-      <div class="field-full"><label class="field-label">Nombre *</label><input class="field-input" id="newName"></div>
-      <div class="field-row">
-        <div><label class="field-label">Precio</label><input class="field-input" id="newPrice" placeholder="$0.000"></div>
-        <div><label class="field-label">Categoría *</label><select class="field-input" id="newCat"></select></div>
-      </div>
-      <div class="field-full"><label class="field-label">Descripción</label><textarea class="field-input" id="newDesc"></textarea></div>
-      <button class="primary-btn" id="savNewBtn" onclick="saveNewProduct()">Agregar al catálogo ✓</button>
-    </div>
-  </div>
-
-  <div class="admin-tab-content" id="tab-categorias">
-    <div class="add-product-form">
-      <div id="catList"></div>
-      <div class="field-row" style="margin-top:15px;">
-        <input class="field-input" id="newCatName" placeholder="Nueva categoría...">
-        <button class="primary-btn" onclick="addCategory()" style="margin-top:0">+ Agregar</button>
-      </div>
-    </div>
-  </div>
+  <div class="admin-tab-content" id="tab-nuevo">
+    <div class="add-product-form">
+      <div class="field-full">
+        <label class="field-label">Foto</label>
+        <div class="foto-upload">
+          <div class="foto-preview-wrap" id="newProdPreview">📦</div>
+          <button type="button" class="foto-btn" onclick="document.getElementById('newProdFile').click()">📷 Seleccionar</button>
+          <input type="file" id="newProdFile" style="display:none" onchange="handlePhoto(this, 'new')">
+        </div>
+      </div>
+      <div class="field-full"><label class="field-label">Nombre</label><input class="field-input" id="newName"></div>
+      <div class="field-row">
+        <div><label class="field-label">Precio</label><input class="field-input" id="newPrice" placeholder="$"></div>
+        <div><label class="field-label">Categoría</label><select class="field-input" id="newCat"><option value="general">General</option></select></div>
+      </div>
+      <button class="primary-btn" id="savNewBtn" onclick="saveNewProduct()">Guardar Producto ✓</button>
+    </div>
+  </div>
 </div>
 
 <div class="admin-login" id="adminLogin">
-  <div class="login-box">
-    <div class="login-title">Acceso admin</div><br>
-    <input class="field-input" type="password" id="loginInput" style="text-align:center; letter-spacing:4px;"><br><br>
-    <button class="primary-btn" onclick="checkLogin()">Entrar</button><br><br>
-    <button onclick="closeAdminLogin()" style="background:none; border:none; cursor:pointer;">Cancelar</button>
-  </div>
-</div>
-
-<div class="cart-panel" id="cartPanel">
-  <div class="cart-inner">
-    <div class="cart-title">Mi pedido 🛒</div>
-    <div id="cartItems"></div>
-    <div id="cartFooter" style="display:none; margin-top:15px;">
-      <button class="primary-btn" onclick="sendToWhatsApp()" style="background:var(--verde-wa)">Enviar por WhatsApp</button>
-    </div>
-  </div>
+  <div class="login-box">
+    <h4>Acceso Admin</h4><br>
+    <input class="field-input" type="password" id="loginInput" style="text-align:center;"><br><br>
+    <button class="primary-btn" onclick="checkLogin()">Entrar</button>
+  </div>
 </div>
 
 <div class="toast" id="toast"></div>
@@ -203,140 +149,130 @@ body{font-family:'DM Sans',sans-serif;background:var(--crema);color:var(--texto)
 const firebaseConfig = {apiKey:"AIzaSyCf5mRoSSQBSn88QgOaEwGsgY5hyIjqKXI",authDomain:"catalogo-marleny.firebaseapp.com",projectId:"catalogo-marleny",storageBucket:"catalogo-marleny.firebasestorage.app",messagingSenderId:"812943572701",appId:"1:812943572701:web:cf62a43cc87afa8390e534"};
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-const WA = '573215049269';
 const PASS = 'marleny2025';
-
-let products=[], categories=[], cart=[], currentFilter='all', newProdImg='';
+let products = [], newProdImg = '', editProdImg = '';
 
 async function init(){
-  db.collection('categorias').orderBy('order').onSnapshot(snap => {
-    categories = snap.docs.map(d => ({id:d.id, ...d.data()}));
-    renderFilterRow(); renderCatSelect(); renderCatList();
-  });
-  db.collection('productos').orderBy('order','desc').onSnapshot(snap => {
-    products = snap.docs.map(d => ({id:d.id, ...d.data()}));
-    renderCatalog(); renderAdminProductList();
-  });
+  db.collection('productos').orderBy('order','desc').onSnapshot(snap => {
+    products = snap.docs.map(d => ({id:d.id, ...d.data()}));
+    renderCatalog(); renderAdminList();
+  });
 }
 
 function compressImage(file, cb) {
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = e => {
-    const img = new Image();
-    img.src = e.target.result;
-    img.onload = () => {
-      const canvas = document.createElement('canvas');
-      const maxW = 500;
-      const scale = maxW / img.width;
-      canvas.width = maxW; canvas.height = img.height * scale;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      cb(canvas.toDataURL('image/jpeg', 0.7));
-    };
-  };
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = e => {
+    const img = new Image();
+    img.src = e.target.result;
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      const maxW = 500;
+      const scale = maxW / img.width;
+      canvas.width = maxW; canvas.height = img.height * scale;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      cb(canvas.toDataURL('image/jpeg', 0.7));
+    };
+  };
 }
 
-function renderFilterRow(){
-  const row = document.getElementById('filterRow');
-  let h = `<div class="filter-chip ${currentFilter==='all'?'active':''}" onclick="filterProducts('all',this)">Todo</div>`;
-  categories.forEach(c => h += `<div class="filter-chip ${currentFilter===c.id?'active':''}" onclick="filterProducts('${c.id}',this)">${c.name}</div>`);
-  row.innerHTML = h;
+function handlePhoto(input, type, id) {
+  if(input.files[0]) {
+    compressImage(input.files[0], src => {
+      if(type === 'new') {
+        newProdImg = src;
+        document.getElementById('newProdPreview').innerHTML = `<img src="${src}">`;
+      } else {
+        editProdImg = src;
+        document.getElementById('editPrev-'+id).innerHTML = `<img src="${src}">`;
+      }
+    });
+  }
 }
 
 function renderCatalog(){
-  const grid = document.getElementById('productsGrid');
-  const active = products.filter(p => p.active);
-  grid.innerHTML = active.map(p => {
-    const hidden = (currentFilter!=='all' && p.cat!==currentFilter) ? 'hidden' : '';
-    const img = p.img ? `<img src="${p.img}">` : `<div style="font-size:40px">📦</div>`;
-    return `<div class="product-card ${hidden}">
-      <div class="product-badge" style="background:var(--verde-wa)">${p.badge||'Disponible'}</div>
-      <div class="product-img-wrap">${img}</div>
-      <div class="product-body">
-        <div class="product-name">${p.name}</div>
-        <div class="product-price">${p.price || 'Consultar'}</div>
-        <button class="add-btn" onclick="addToCart('${p.id}')">+ Agregar</button>
-      </div>
-    </div>`;
-  }).join('');
+  const grid = document.getElementById('productsGrid');
+  grid.innerHTML = products.filter(p => p.active).map(p => `
+    <div class="product-card">
+      <div class="product-img-wrap">${p.img?`<img src="${p.img}">`:'📦'}</div>
+      <div class="product-body">
+        <div class="product-name">${p.name}</div>
+        <div class="product-price">${p.price || 'Consultar'}</div>
+        <button class="add-btn" onclick="showToast('Agregado')">+ Agregar</button>
+      </div>
+    </div>`).join('');
 }
 
-function renderAdminProductList(){
-  document.getElementById('adminProductList').innerHTML = products.map(p => `
-    <div class="admin-product-item">
-      <div class="item-top">
-        <div class="item-thumb">${p.img?`<img src="${p.img}">`:'📦'}</div>
-        <div class="item-info">
-          <div class="item-name">${p.name}</div>
-          <div style="font-size:11px; color:gray;">${p.price || 'Sin precio'}</div>
-        </div>
-        <div class="item-actions">
-          <button class="toggle-sw ${p.active?'on':''}" onclick="toggleStatus('${p.id}', ${p.active})"></button>
-          <button class="delete-btn" onclick="deleteProd('${p.id}')">✕</button>
-        </div>
-      </div>
-    </div>`).join('');
+function renderAdminList(){
+  document.getElementById('adminProductList').innerHTML = products.map(p => `
+    <div class="admin-product-item">
+      <div class="item-top">
+        <div class="item-thumb">${p.img?`<img src="${p.img}">`:'📦'}</div>
+        <div class="item-info"><strong>${p.name}</strong><br><small>${p.price}</small></div>
+        <div class="item-actions">
+          <button class="toggle-sw ${p.active?'on':''}" onclick="toggleActive('${p.id}',${p.active})"></button>
+          <button class="icon-btn" onclick="toggleEdit('${p.id}')">✏️</button>
+          <button class="icon-btn" style="color:red" onclick="deleteProd('${p.id}')">✕</button>
+        </div>
+      </div>
+      <div class="item-edit-form" id="editForm-${p.id}">
+        <div class="field-full">
+          <div class="foto-upload">
+            <div class="foto-preview-wrap" id="editPrev-${p.id}">${p.img?`<img src="${p.img}">`:'📦'}</div>
+            <button class="foto-btn" onclick="document.getElementById('editFile-${p.id}').click()">Cambiar Foto</button>
+            <input type="file" id="editFile-${p.id}" style="display:none" onchange="handlePhoto(this,'edit','${p.id}')">
+          </div>
+        </div>
+        <div class="field-full"><label class="field-label">Nombre</label><input class="field-input" id="editName-${p.id}" value="${p.name}"></div>
+        <div class="field-row">
+          <input class="field-input" id="editPrice-${p.id}" value="${p.price}">
+          <button class="primary-btn" onclick="updateProd('${p.id}')">Actualizar ✓</button>
+        </div>
+      </div>
+    </div>`).join('');
 }
 
-// ACCIONES
+function toggleEdit(id){ 
+  const form = document.getElementById('editForm-'+id);
+  form.classList.toggle('open');
+  editProdImg = ''; // Reset temporal al abrir
+}
+
+async function updateProd(id){
+  const name = document.getElementById('editName-'+id).value;
+  const price = document.getElementById('editPrice-'+id).value;
+  const updateData = { name, price };
+  if(editProdImg) updateData.img = editProdImg;
+  
+  await db.collection('productos').doc(id).update(updateData);
+  showToast('Actualizado');
+}
+
 async function saveNewProduct(){
-  const name = document.getElementById('newName').value;
-  const cat = document.getElementById('newCat').value;
-  if(!name || !cat) return alert('Nombre y Categoría obligatorios');
-  const btn = document.getElementById('savNewBtn');
-  btn.disabled=true; btn.innerText='Guardando...';
-  
-  await db.collection('productos').add({
-    name, cat, price: document.getElementById('newPrice').value,
-    desc: document.getElementById('newDesc').value,
-    img: newProdImg, active: true, order: Date.now()
-  });
-  
-  showToast('¡Guardado!');
-  document.getElementById('newName').value=''; newProdImg='';
-  document.getElementById('newProdPreview').innerHTML='📦';
-  btn.disabled=false; btn.innerText='Agregar al catálogo ✓';
-  switchTab('productos', document.querySelector('.admin-tab'));
+  const name = document.getElementById('newName').value;
+  if(!name) return alert('Pon un nombre');
+  await db.collection('productos').add({
+    name, price: document.getElementById('newPrice').value,
+    img: newProdImg, active: true, order: Date.now()
+  });
+  document.getElementById('newName').value = ''; newProdImg = '';
+  document.getElementById('newProdPreview').innerHTML = '📦';
+  switchTab('productos', document.querySelector('.admin-tab'));
 }
 
-async function toggleStatus(id, current){ await db.collection('productos').doc(id).update({active: !current}); }
-async function deleteProd(id){ if(confirm('¿Borrar producto?')) await db.collection('productos').doc(id).delete(); }
-function handleNewPhoto(input){ if(input.files[0]) compressImage(input.files[0], src => { newProdImg=src; document.getElementById('newProdPreview').innerHTML=`<img src="${src}">`; }); }
+async function toggleActive(id, val){ await db.collection('productos').doc(id).update({active: !val}); }
+async function deleteProd(id){ if(confirm('¿Borrar?')) await db.collection('productos').doc(id).delete(); }
 
-// UI UTILS
 function openAdminLogin(){ document.getElementById('adminLogin').classList.add('open'); }
-function closeAdminLogin(){ document.getElementById('adminLogin').classList.remove('open'); }
-function checkLogin(){ if(document.getElementById('loginInput').value === PASS) { closeAdminLogin(); openAdmin(); } else alert('Error'); }
-function openAdmin(){ document.getElementById('catalogoView').classList.add('hidden'); document.getElementById('adminPanel').classList.add('active'); }
+function checkLogin(){ if(document.getElementById('loginInput').value === PASS) { document.getElementById('adminLogin').classList.remove('open'); document.getElementById('catalogoView').classList.add('hidden'); document.getElementById('adminPanel').classList.add('active'); } }
 function exitAdmin(){ location.reload(); }
 function switchTab(t, el){
-  document.querySelectorAll('.admin-tab').forEach(x => x.classList.remove('active'));
-  document.querySelectorAll('.admin-tab-content').forEach(x => x.classList.remove('active'));
-  el.classList.add('active'); document.getElementById('tab-'+t).classList.add('active');
+  document.querySelectorAll('.admin-tab').forEach(x => x.classList.remove('active'));
+  document.querySelectorAll('.admin-tab-content').forEach(x => x.classList.remove('active'));
+  el.classList.add('active'); document.getElementById('tab-'+t).classList.add('active');
 }
-function filterProducts(c,el){ currentFilter=c; document.querySelectorAll('.filter-chip').forEach(x=>x.classList.remove('active')); el.classList.add('active'); renderCatalog(); }
 function showToast(m){ const t=document.getElementById('toast'); t.innerText=m; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2000); }
-
-// CARRITO SIMPLE
-function addToCart(id){
-  const p = products.find(x => x.id === id);
-  cart.push(p);
-  document.getElementById('cartCount').innerText = cart.length;
-  showToast('Agregado');
-}
-function toggleCart(){ document.getElementById('cartPanel').classList.toggle('open'); }
-function sendToWhatsApp(){
-  let msg = 'Hola Marleny, mi pedido:\n';
-  cart.forEach(i => msg += `- ${i.name}\n`);
-  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`);
-}
-
-// CATEGORIAS
-function renderCatSelect(){ document.getElementById('newCat').innerHTML = categories.map(c => `<option value="${c.id}">${c.name}</option>`).join(''); }
-function renderCatList(){ document.getElementById('catList').innerHTML = categories.map(c => `<div class="cat-item"><span>${c.name}</span> <button onclick="deleteCat('${c.id}')" class="delete-btn">✕</button></div>`).join(''); }
-async function addCategory(){ const n = document.getElementById('newCatName').value; if(n) await db.collection('categorias').add({name:n, id:n.toLowerCase(), order:Date.now()}); document.getElementById('newCatName').value=''; }
-async function deleteCat(id){ if(confirm('¿Borrar categoría?')) await db.collection('categorias').doc(id).delete(); }
 
 init();
 </script>
