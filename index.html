@@ -16,26 +16,31 @@ body{font-family:'DM Sans',sans-serif;background:var(--crema);color:var(--texto)
 .brand-block{display:flex;align-items:center;gap:12px;}
 .brand-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--rosa),var(--rosa-suave));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;color:white;font-size:18px;font-weight:600;}
 .brand-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;}
-.header-right{display:flex;align-items:center;gap:8px;}
 
-/* BOTONES */
-.icon-btn{background:none;border:1.5px solid var(--borde);border-radius:50px;padding:8px 14px;cursor:pointer;font-size:12px;font-family:inherit;color:var(--texto-suave);}
-.primary-btn{width:100%;padding:13px;background:var(--rosa);color:white;border:none;border-radius:12px;font-size:14px;font-weight:500;cursor:pointer;}
+/* FILTROS */
+.filter-section{max-width:700px;margin:20px auto 0;padding:0 16px;}
+.filter-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;}
+.filter-row::-webkit-scrollbar{display:none;}
+.filter-chip{flex-shrink:0;padding:8px 16px;border-radius:50px;font-size:13px;border:1.5px solid var(--borde);background:var(--blanco);color:var(--texto-suave);cursor:pointer;white-space:nowrap;transition:0.3s;}
+.filter-chip.active{background:var(--rosa);color:white;border-color:var(--rosa);}
 
-/* GRID CATALOGO */
-.products-section{max-width:700px;margin:20px auto;padding:0 16px;}
+/* GRID */
+.products-section{max-width:700px;margin:10px auto;padding:0 16px;}
 .products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
 @media(min-width:600px){ .products-grid{grid-template-columns:repeat(3,1fr);} }
 
-.product-card{background:var(--blanco);border-radius:16px;border:1.5px solid var(--borde);overflow:hidden;display:flex;flex-direction:column;}
+.product-card{background:var(--blanco);border-radius:16px;border:1.5px solid var(--borde);overflow:hidden;display:flex;flex-direction:column;position:relative;}
+.product-card.hidden{display:none;}
+.product-badge{position:absolute;top:8px;left:8px;color:white;font-size:9px;font-weight:600;padding:3px 8px;border-radius:20px;z-index:2;text-transform:uppercase;}
 .product-img-wrap{height:140px;display:flex;align-items:center;justify-content:center;background:#f9f9f9;overflow:hidden;}
 .product-img-wrap img{width:100%;height:100%;object-fit:cover;}
 .product-body{padding:12px;flex-grow:1;display:flex;flex-direction:column;justify-content:space-between;}
-.product-name{font-size:13px;font-weight:500;margin-bottom:4px;}
-.product-price{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:var(--rosa);margin-bottom:10px;}
-.add-btn{width:100%;padding:8px;background:var(--rosa-claro);border:1.1px solid var(--rosa-suave);border-radius:10px;color:var(--rosa);font-size:12px;cursor:pointer;}
+.product-name{font-size:13px;font-weight:500;margin-bottom:4px;line-height:1.3;}
+.product-price{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--rosa);margin-bottom:8px;}
+.add-btn{width:100%;padding:8px;background:var(--rosa-claro);border:1.1px solid var(--rosa-suave);border-radius:10px;color:var(--rosa);font-size:12px;cursor:pointer;font-weight:500;}
+.add-btn.service{background:#F3EEFF;color:var(--morado);border-color:#C5ADEF;}
 
-/* PANEL ADMIN */
+/* ADMIN & MODALS */
 #adminPanel, #adminLogin { display:none; max-width:700px; margin:0 auto; padding:20px; }
 #adminPanel.active, #adminLogin.active { display:block; }
 .admin-tabs{display:flex;border-bottom:1.5px solid var(--borde);margin-bottom:20px;}
@@ -46,9 +51,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--crema);color:var(--texto)
 .item-edit-form.open{display:block;}
 
 /* FORMULARIOS */
-.field-input{width:100%;padding:10px;border:1.5px solid var(--borde);border-radius:10px;margin-bottom:10px;outline:none;}
-.foto-preview-wrap{width:60px;height:60px;border-radius:10px;background:#eee;overflow:hidden;margin-bottom:10px;display:flex;align-items:center;justify-content:center;}
-.foto-preview-wrap img{width:100%;height:100%;object-fit:cover;}
+.field-input{width:100%;padding:10px;border:1.5px solid var(--borde);border-radius:10px;margin-bottom:10px;outline:none;font-family:inherit;}
+.field-label{font-size:11px;color:var(--texto-suave);display:block;margin-bottom:4px;text-transform:uppercase;font-weight:600;}
+.primary-btn{width:100%;padding:13px;background:var(--rosa);color:white;border:none;border-radius:12px;font-size:14px;font-weight:500;cursor:pointer;}
+.icon-btn{background:none;border:1.5px solid var(--borde);border-radius:50px;padding:8px 14px;cursor:pointer;font-size:12px;color:var(--texto-suave);}
 
 .toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--texto);color:white;padding:10px 20px;border-radius:50px;opacity:0;transition:0.3s;z-index:1000;}
 .toast.show{opacity:1;}
@@ -61,20 +67,25 @@ body{font-family:'DM Sans',sans-serif;background:var(--crema);color:var(--texto)
     <div class="header-inner">
         <div class="brand-block">
             <div class="brand-avatar">M</div>
-            <div><div class="brand-name">Marleny</div></div>
+            <div class="brand-name">Marleny</div>
         </div>
         <div class="header-right">
             <button class="icon-btn" onclick="showLogin()">⚙ Admin</button>
-            <button class="icon-btn" onclick="alert('Pedido vía WhatsApp')">🛒 <span id="cartCount">0</span></button>
+            <button class="icon-btn" onclick="location.reload()">🛒 <span id="cartCount">0</span></button>
         </div>
     </div>
 </header>
 
 <div id="catalogoView">
+    <section class="filter-section">
+        <div class="filter-row" id="filterRow">
+            <div class="filter-chip active" onclick="filterCat('all', this)">Todo</div>
+        </div>
+    </section>
     <section class="products-section">
         <div class="products-grid" id="productsGrid"></div>
     </section>
-    <div style="text-align:center; padding:40px; font-size:10px; color:#bbb;">Vibras Positivas HM — © 2026</div>
+    <div style="text-align:center; padding:40px; font-size:10px; color:#bbb;">VIBRAS POSITIVAS HM — © 2026</div>
 </div>
 
 <div id="adminLogin">
@@ -89,11 +100,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--crema);color:var(--texto)
 <div id="adminPanel">
     <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
         <h3>Panel Admin ✨</h3>
-        <button class="icon-btn" onclick="location.reload()">Sair</button>
+        <button class="icon-btn" onclick="location.reload()">Salir</button>
     </div>
     <div class="admin-tabs">
         <div class="admin-tab active" onclick="switchTab('lista', this)">Productos</div>
         <div class="admin-tab" onclick="switchTab('nuevo', this)">+ Nuevo</div>
+        <div class="admin-tab" onclick="switchTab('categorias', this)">Categorías</div>
     </div>
 
     <div id="tab-lista" class="tab-content">
@@ -102,13 +114,31 @@ body{font-family:'DM Sans',sans-serif;background:var(--crema);color:var(--texto)
 
     <div id="tab-nuevo" class="tab-content" style="display:none;">
         <div style="background:white; padding:20px; border-radius:15px; border:1.5px solid var(--borde);">
-            <div class="foto-preview-wrap" id="newPrev">📦</div>
-            <button class="icon-btn" onclick="document.getElementById('fileNew').click()">📷 Seleccionar Foto</button>
+            <div style="width:60px;height:60px;background:#eee;border-radius:10px;margin-bottom:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;" id="newPrev">📦</div>
+            <button class="icon-btn" onclick="document.getElementById('fileNew').click()">📷 Foto</button>
             <input type="file" id="fileNew" style="display:none" onchange="procFile(this, 'new')">
             <br><br>
-            <input class="field-input" id="newName" placeholder="Nombre del producto">
-            <input class="field-input" id="newPrice" placeholder="Precio (ej: $35.000)">
-            <button class="primary-btn" id="btnSave" onclick="saveNew()">Guardar Producto ✓</button>
+            <label class="field-label">Nombre</label>
+            <input class="field-input" id="newName" placeholder="Ej: Crema Amway">
+            <label class="field-label">Precio</label>
+            <input class="field-input" id="newPrice" placeholder="Ej: $35.000 o Consultar">
+            <label class="field-label">Categoría</label>
+            <select class="field-input" id="newCatSel"></select>
+            <label class="field-label">Tipo</label>
+            <select class="field-input" id="newType">
+                <option value="prod">Producto Físico</option>
+                <option value="serv">Servicio / Entrenamiento</option>
+            </select>
+            <button class="primary-btn" id="btnSave" onclick="saveNew()">Guardar en Catálogo ✓</button>
+        </div>
+    </div>
+
+    <div id="tab-categorias" class="tab-content" style="display:none;">
+        <div style="background:white; padding:20px; border-radius:15px; border:1.5px solid var(--borde);">
+            <div id="catAdminList"></div>
+            <hr style="margin:15px 0; border:0; border-top:1px solid #eee;">
+            <input class="field-input" id="newCatName" placeholder="Nombre nueva categoría">
+            <button class="primary-btn" onclick="saveCat()">Crear Categoría</button>
         </div>
     </div>
 </div>
@@ -123,9 +153,13 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const PASS = 'marleny2025';
 
-let products = [], imgNew = '', imgEdit = '';
+let products = [], categories = [], imgNew = '', imgEdit = '', curFilter = 'all';
 
 async function init(){
+    db.collection('categorias').orderBy('order','asc').onSnapshot(snap => {
+        categories = snap.docs.map(d => ({id:d.id, ...d.data()}));
+        renderFilters(); renderCatSelects();
+    });
     db.collection('productos').orderBy('order','desc').onSnapshot(snap => {
         products = snap.docs.map(d => ({id:d.id, ...d.data()}));
         renderCatalog(); renderAdmin();
@@ -146,74 +180,135 @@ function procFile(input, type, id){
             canvas.width = max; canvas.height = img.height * ratio;
             canvas.getContext('2d').drawImage(img,0,0,max,canvas.height);
             const final = canvas.toDataURL('image/jpeg', 0.7);
-            if(type==='new'){ imgNew=final; document.getElementById('newPrev').innerHTML=`<img src="${final}">`; }
-            else { imgEdit=final; document.getElementById('editPrev-'+id).innerHTML=`<img src="${final}">`; }
+            if(type==='new'){ imgNew=final; document.getElementById('newPrev').innerHTML=`<img src="${final}" style="width:100%;height:100%;object-fit:cover;">`; }
+            else { imgEdit=final; document.getElementById('editPrev-'+id).innerHTML=`<img src="${final}" style="width:100%;height:100%;object-fit:cover;">`; }
         };
     };
 }
 
+function renderFilters(){
+    const row = document.getElementById('filterRow');
+    let h = `<div class="filter-chip ${curFilter==='all'?'active':''}" onclick="filterCat('all', this)">Todo</div>`;
+    categories.forEach(c => {
+        h += `<div class="filter-chip ${curFilter===c.id?'active':''}" onclick="filterCat('${c.id}', this)">${c.name}</div>`;
+    });
+    row.innerHTML = h;
+}
+
 function renderCatalog(){
     const grid = document.getElementById('productsGrid');
-    grid.innerHTML = products.filter(p=>p.active).map(p => `
-        <div class="product-card">
+    grid.innerHTML = products.filter(p=>p.active).map(p => {
+        const isHidden = (curFilter !== 'all' && p.cat !== curFilter) ? 'hidden' : '';
+        const badgeColor = p.type === 'serv' ? 'var(--morado)' : 'var(--verde-wa)';
+        const badgeText = p.type === 'serv' ? 'Servicio' : 'Disponible';
+        return `
+        <div class="product-card ${isHidden}">
+            <div class="product-badge" style="background:${badgeColor}">${badgeText}</div>
             <div class="product-img-wrap">${p.img?`<img src="${p.img}">`:'📦'}</div>
             <div class="product-body">
                 <div class="product-name">${p.name}</div>
                 <div class="product-price">${p.price || 'Consultar'}</div>
-                <button class="add-btn" onclick="msg('Agregado')">+ Agregar</button>
+                <button class="add-btn ${p.type==='serv'?'service':''}" onclick="msg('Interés registrado')">
+                    ${p.type==='serv'?'Quiero info':'+ Agregar'}
+                </button>
             </div>
-        </div>`).join('');
+        </div>`;
+    }).join('');
 }
 
 function renderAdmin(){
-    document.getElementById('adminProductList').innerHTML = products.map(p => `
+    document.getElementById('adminProductList').innerHTML = products.map(p => {
+        const catName = categories.find(c=>c.id===p.cat)?.name || 'Sin cat.';
+        return `
         <div class="admin-product-item">
             <div style="display:flex; align-items:center; gap:10px;">
                 <div style="width:40px;height:40px;border-radius:8px;overflow:hidden;background:#eee;">${p.img?`<img src="${p.img}" style="width:100%;height:100%;object-fit:cover;">`:'📦'}</div>
-                <div style="flex:1; font-size:13px;"><b>${p.name}</b></div>
+                <div style="flex:1; font-size:12px;"><b>${p.name}</b><br><span style="color:gray">${catName}</span></div>
                 <button class="icon-btn" onclick="document.getElementById('edit-${p.id}').classList.toggle('open')">✏️</button>
                 <button class="icon-btn" onclick="tog('${p.id}',${p.active})">${p.active?'✅':'❌'}</button>
             </div>
             <div class="item-edit-form" id="edit-${p.id}">
-                <div class="foto-preview-wrap" id="editPrev-${p.id}">${p.img?`<img src="${p.img}">`:'📦'}</div>
+                <div style="width:60px;height:60px;border-radius:10px;overflow:hidden;background:#eee;margin-bottom:10px;" id="editPrev-${p.id}">${p.img?`<img src="${p.img}" style="width:100%;height:100%;object-fit:cover;">`:'📦'}</div>
                 <button class="icon-btn" onclick="document.getElementById('file-${p.id}').click()">Cambiar Foto</button>
                 <input type="file" id="file-${p.id}" style="display:none" onchange="procFile(this,'edit','${p.id}')">
                 <br><br>
                 <input class="field-input" id="en-${p.id}" value="${p.name}">
                 <input class="field-input" id="ep-${p.id}" value="${p.price}">
-                <button class="primary-btn" onclick="upd('${p.id}')">Actualizar</button>
-                <button onclick="del('${p.id}')" style="margin-top:10px; color:red; background:none; border:none; cursor:pointer; font-size:11px;">Eliminar Producto</button>
+                <select class="field-input" id="ec-${p.id}">
+                    ${categories.map(c=>`<option value="${c.id}" ${p.cat===c.id?'selected':''}>${c.name}</option>`).join('')}
+                </select>
+                <button class="primary-btn" onclick="upd('${p.id}')">Actualizar Datos</button>
+                <button onclick="del('${p.id}')" style="margin-top:10px; color:red; background:none; border:none; cursor:pointer; font-size:11px;">Eliminar permanentemente</button>
             </div>
-        </div>`).join('');
+        </div>`;
+    }).join('');
+
+    document.getElementById('catAdminList').innerHTML = categories.map(c => `
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; font-size:13px;">
+            <span>${c.name}</span>
+            <button onclick="delCat('${c.id}')" style="color:red; background:none; border:none; cursor:pointer;">✕</button>
+        </div>
+    `).join('');
+}
+
+function filterCat(id, el){
+    curFilter = id;
+    document.querySelectorAll('.filter-chip').forEach(x=>x.classList.remove('active'));
+    el.classList.add('active');
+    renderCatalog();
+}
+
+function renderCatSelects(){
+    const html = categories.map(c=>`<option value="${c.id}">${c.name}</option>`).join('');
+    document.getElementById('newCatSel').innerHTML = html;
 }
 
 async function saveNew(){
     const n = document.getElementById('newName').value;
-    if(!n) return alert('Falta nombre');
+    const cat = document.getElementById('newCatSel').value;
+    if(!n || !cat) return alert('Nombre y categoría obligatorios');
     const b = document.getElementById('btnSave'); b.disabled=true;
-    await db.collection('productos').add({ name:n, price:document.getElementById('newPrice').value, img:imgNew, active:true, order:Date.now() });
-    document.getElementById('newName').value=''; imgNew=''; document.getElementById('newPrev').innerHTML='📦';
+    await db.collection('productos').add({ 
+        name:n, 
+        price:document.getElementById('newPrice').value, 
+        cat:cat,
+        type:document.getElementById('newType').value,
+        img:imgNew, active:true, order:Date.now() 
+    });
+    document.getElementById('newName').value=''; imgNew=''; 
+    document.getElementById('newPrev').innerHTML='📦';
     b.disabled=false; switchTab('lista', document.querySelectorAll('.admin-tab')[0]);
 }
 
 async function upd(id){
-    const data = { name: document.getElementById('en-'+id).value, price: document.getElementById('ep-'+id).value };
+    const data = { 
+        name: document.getElementById('en-'+id).value, 
+        price: document.getElementById('ep-'+id).value,
+        cat: document.getElementById('ec-'+id).value
+    };
     if(imgEdit) data.img = imgEdit;
     await db.collection('productos').doc(id).update(data);
-    imgEdit=''; msg('Actualizado');
+    imgEdit=''; msg('Actualizado correctamente');
 }
 
+async function saveCat(){
+    const n = document.getElementById('newCatName').value;
+    if(!n) return;
+    await db.collection('categorias').add({ name:n, id:n.toLowerCase().replace(/ /g,'_'), order:Date.now() });
+    document.getElementById('newCatName').value='';
+}
+
+async function delCat(id){ if(confirm('¿Borrar categoría?')) await db.collection('categorias').doc(id).delete(); }
 async function tog(id,v){ await db.collection('productos').doc(id).update({active:!v}); }
-async function del(id){ if(confirm('¿Borrar?')) await db.collection('productos').doc(id).delete(); }
+async function del(id){ if(confirm('¿Borrar producto?')) await db.collection('productos').doc(id).delete(); }
 
 function showLogin(){ document.getElementById('adminLogin').classList.add('active'); document.getElementById('catalogoView').classList.add('hidden'); }
 function hideLogin(){ document.getElementById('adminLogin').classList.remove('active'); document.getElementById('catalogoView').classList.remove('hidden'); }
-function doLogin(){ if(document.getElementById('loginInput').value===PASS){ document.getElementById('adminLogin').classList.remove('active'); document.getElementById('adminPanel').classList.add('active'); } else alert('Error'); }
+function doLogin(){ if(document.getElementById('loginInput').value===PASS){ document.getElementById('adminLogin').classList.remove('active'); document.getElementById('adminPanel').classList.add('active'); } else alert('Contraseña incorrecta'); }
 
 function switchTab(t, el){
     document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));
-    document.getElementById('tab-lista').style.display='none';
-    document.getElementById('tab-nuevo').style.display='none';
+    document.querySelectorAll('.tab-content').forEach(x=>x.style.display='none');
     el.classList.add('active'); document.getElementById('tab-'+t).style.display='block';
 }
 
