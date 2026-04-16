@@ -9,136 +9,108 @@
 :root{--rosa:#E8637A;--rosa-suave:#F4A7B5;--rosa-claro:#FDF0F2;--crema:#FBF7F4;--dorado:#C9964A;--verde-wa:#25D366;--morado:#7C5CBF;--texto:#1A1A1A;--texto-suave:#6B6B6B;--borde:#ECDEDE;--blanco:#FFFFFF;--rojo:#E74C3C;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'DM Sans',sans-serif;background:var(--crema);color:var(--texto);min-height:100vh;}
+
+/* HEADER */
 .site-header{background:var(--blanco);border-bottom:1.5px solid var(--borde);position:sticky;top:0;z-index:100;}
 .header-inner{max-width:700px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;}
 .brand-block{display:flex;align-items:center;gap:12px;}
-.brand-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--rosa),var(--rosa-suave));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;color:white;font-size:18px;font-weight:600;flex-shrink:0;}
-.brand-name{font-family:'Playfair Display',serif;font-size:19px;font-weight:600;letter-spacing:-0.3px;}
-.brand-tagline{font-size:11px;color:var(--texto-suave);margin-top:1px;}
+.brand-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--rosa),var(--rosa-suave));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;color:white;font-size:18px;font-weight:600;}
+.brand-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;}
+.header-right{display:flex;align-items:center;gap:8px;}
 
-/* GRID & CARDS */
-.products-section{max-width:700px;margin:20px auto 0;padding:0 16px;}
+/* BOTONES */
+.icon-btn{background:none;border:1.5px solid var(--borde);border-radius:50px;padding:8px 14px;cursor:pointer;font-size:12px;font-family:inherit;color:var(--texto-suave);}
+.primary-btn{width:100%;padding:13px;background:var(--rosa);color:white;border:none;border-radius:12px;font-size:14px;font-weight:500;cursor:pointer;}
+
+/* GRID CATALOGO */
+.products-section{max-width:700px;margin:20px auto;padding:0 16px;}
 .products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
-@media(min-width:500px){.products-grid{grid-template-columns:repeat(3,1fr);}}
-.product-card{background:var(--blanco);border-radius:16px;border:1.5px solid var(--borde);overflow:hidden;position:relative;}
-.product-card.hidden{display:none;}
-.product-img-wrap{height:120px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#f9f9f9;}
+@media(min-width:600px){ .products-grid{grid-template-columns:repeat(3,1fr);} }
+
+.product-card{background:var(--blanco);border-radius:16px;border:1.5px solid var(--borde);overflow:hidden;display:flex;flex-direction:column;}
+.product-img-wrap{height:140px;display:flex;align-items:center;justify-content:center;background:#f9f9f9;overflow:hidden;}
 .product-img-wrap img{width:100%;height:100%;object-fit:cover;}
-.product-body{padding:10px 12px 12px;}
-.product-name{font-size:13px;font-weight:500;line-height:1.35;margin-bottom:4px;}
+.product-body{padding:12px;flex-grow:1;display:flex;flex-direction:column;justify-content:space-between;}
+.product-name{font-size:13px;font-weight:500;margin-bottom:4px;}
 .product-price{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:var(--rosa);margin-bottom:10px;}
-.add-btn{width:100%;padding:9px 0;background:var(--rosa-claro);border:1.5px solid var(--rosa-suave);border-radius:10px;font-size:12px;font-weight:500;color:var(--rosa);cursor:pointer;}
+.add-btn{width:100%;padding:8px;background:var(--rosa-claro);border:1.1px solid var(--rosa-suave);border-radius:10px;color:var(--rosa);font-size:12px;cursor:pointer;}
 
-/* HERO */
-.hero{max-width:700px;margin:20px auto 0;padding:0 16px;}
-.hero-card{background:linear-gradient(120deg,#E8637A 0%,#C9964A 100%);border-radius:20px;padding:28px;color:white;position:relative;overflow:hidden;}
-.hero-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:600;}
-.hero-wa{display:inline-flex;align-items:center;gap:7px;margin-top:16px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);border-radius:50px;padding:8px 16px;color:white;text-decoration:none;font-size:13px;}
-
-/* ADMIN PANEL */
-.admin-panel{display:none;max-width:700px;margin:0 auto;padding:0 16px 100px;}
-.admin-panel.active{display:block;}
+/* PANEL ADMIN */
+#adminPanel, #adminLogin { display:none; max-width:700px; margin:0 auto; padding:20px; }
+#adminPanel.active, #adminLogin.active { display:block; }
 .admin-tabs{display:flex;border-bottom:1.5px solid var(--borde);margin-bottom:20px;}
-.admin-tab{padding:12px 16px;font-size:13px;cursor:pointer;color:var(--texto-suave);}
-.admin-tab.active{color:var(--rosa);border-bottom:2.5px solid var(--rosa);}
-.admin-tab-content{display:none;}
-.admin-tab-content.active{display:block;}
-
-/* LISTA ADMIN */
-.admin-product-item{background:var(--blanco);border-radius:14px;border:1.5px solid var(--borde);padding:14px;margin-bottom:10px;}
-.item-top{display:flex;align-items:center;gap:12px;}
-.item-thumb{width:48px;height:48px;border-radius:10px;overflow:hidden;background:var(--rosa-claro);display:flex;align-items:center;justify-content:center;}
-.item-thumb img{width:100%;height:100%;object-fit:cover;}
-.item-info{flex:1;min-width:0;}
-.item-actions{display:flex;align-items:center;gap:8px;}
-.item-edit-form{display:none;margin-top:15px;padding-top:15px;border-top:1px solid var(--borde);}
+.admin-tab{padding:12px;cursor:pointer;font-size:13px;color:var(--texto-suave);}
+.admin-tab.active{color:var(--rosa);border-bottom:2px solid var(--rosa);}
+.admin-product-item{background:white;padding:12px;border-radius:12px;border:1.5px solid var(--borde);margin-bottom:10px;}
+.item-edit-form{display:none; padding-top:15px; margin-top:10px; border-top:1px dashed #ccc;}
 .item-edit-form.open{display:block;}
 
-/* FORM ELEMENTS */
-.field-full{margin-bottom:10px;}
-.field-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;}
-.field-label{font-size:11px;color:var(--texto-suave);text-transform:uppercase;margin-bottom:4px;display:block;}
-.field-input{width:100%;padding:10px;border:1.5px solid var(--borde);border-radius:10px;font-size:13px;outline:none;background:var(--crema);}
-.primary-btn{width:100%;padding:13px;background:var(--rosa);color:white;border:none;border-radius:12px;font-size:14px;font-weight:500;cursor:pointer;}
-.toggle-sw{width:38px;height:20px;border-radius:20px;background:#ddd;position:relative;border:none;cursor:pointer;transition:0.3s;}
-.toggle-sw.on{background:var(--verde-wa);}
-.toggle-sw::after{content:'';position:absolute;width:14px;height:14px;background:white;border-radius:50%;top:3px;left:3px;transition:0.3s;}
-.toggle-sw.on::after{left:21px;}
-.icon-btn{background:none;border:1.5px solid var(--borde);border-radius:8px;padding:5px 8px;cursor:pointer;font-size:12px;}
+/* FORMULARIOS */
+.field-input{width:100%;padding:10px;border:1.5px solid var(--borde);border-radius:10px;margin-bottom:10px;outline:none;}
+.foto-preview-wrap{width:60px;height:60px;border-radius:10px;background:#eee;overflow:hidden;margin-bottom:10px;display:flex;align-items:center;justify-content:center;}
+.foto-preview-wrap img{width:100%;height:100%;object-fit:cover;}
 
-#catalogoView.hidden{display:none;}
 .toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--texto);color:white;padding:10px 20px;border-radius:50px;opacity:0;transition:0.3s;z-index:1000;}
 .toast.show{opacity:1;}
+#catalogoView.hidden{display:none;}
 </style>
 </head>
 <body>
 
 <header class="site-header">
-  <div class="header-inner">
-    <div class="brand-block">
-      <div class="brand-avatar">M</div>
-      <div><div class="brand-name">Marleny</div><div class="brand-tagline">Tienda · Entrenamiento · Bienestar</div></div>
-    </div>
-    <div class="header-right">
-      <button class="icon-btn" onclick="openAdminLogin()" style="border-radius:50px; padding:8px 15px;">⚙ Admin</button>
-      <div class="add-btn" onclick="toggleCart()" style="padding:8px 15px; border-radius:50px; font-size:13px; width:auto;">🛒 <span id="cartCount">0</span></div>
-    </div>
-  </div>
+    <div class="header-inner">
+        <div class="brand-block">
+            <div class="brand-avatar">M</div>
+            <div><div class="brand-name">Marleny</div></div>
+        </div>
+        <div class="header-right">
+            <button class="icon-btn" onclick="showLogin()">⚙ Admin</button>
+            <button class="icon-btn" onclick="alert('Pedido vía WhatsApp')">🛒 <span id="cartCount">0</span></button>
+        </div>
+    </div>
 </header>
 
 <div id="catalogoView">
-  <section class="hero">
-    <div class="hero-card">
-      <div class="hero-title">Productos de calidad<br>para tu bienestar</div>
-      <a class="hero-wa" href="https://wa.me/573215049269" target="_blank">Escríbeme directo</a>
-    </div>
-  </section>
-  <div class="products-section">
-    <div class="products-grid" id="productsGrid"></div>
-  </div>
-  <div style="text-align:center; padding:40px; font-size:11px; color:#bbb;">Desarrollada por Vibras Positivas HM — © 2026</div>
+    <section class="products-section">
+        <div class="products-grid" id="productsGrid"></div>
+    </section>
+    <div style="text-align:center; padding:40px; font-size:10px; color:#bbb;">Vibras Positivas HM — © 2026</div>
 </div>
 
-<div class="admin-panel" id="adminPanel">
-  <div style="display:flex; justify-content:space-between; align-items:center; padding:20px 0;">
-    <h3>Mi tienda ✨</h3>
-    <button class="icon-btn" onclick="exitAdmin()">← Volver</button>
-  </div>
-  <div class="admin-tabs">
-    <div class="admin-tab active" onclick="switchTab('productos',this)">Productos</div>
-    <div class="admin-tab" onclick="switchTab('nuevo',this)">+ Nuevo</div>
-  </div>
-
-  <div class="admin-tab-content active" id="tab-productos">
-    <div id="adminProductList"></div>
-  </div>
-
-  <div class="admin-tab-content" id="tab-nuevo">
-    <div class="add-product-form">
-      <div class="field-full">
-        <label class="field-label">Foto</label>
-        <div class="foto-upload">
-          <div class="foto-preview-wrap" id="newProdPreview">📦</div>
-          <button type="button" class="foto-btn" onclick="document.getElementById('newProdFile').click()">📷 Seleccionar</button>
-          <input type="file" id="newProdFile" style="display:none" onchange="handlePhoto(this, 'new')">
-        </div>
-      </div>
-      <div class="field-full"><label class="field-label">Nombre</label><input class="field-input" id="newName"></div>
-      <div class="field-row">
-        <div><label class="field-label">Precio</label><input class="field-input" id="newPrice" placeholder="$"></div>
-        <div><label class="field-label">Categoría</label><select class="field-input" id="newCat"><option value="general">General</option></select></div>
-      </div>
-      <button class="primary-btn" id="savNewBtn" onclick="saveNewProduct()">Guardar Producto ✓</button>
-    </div>
-  </div>
+<div id="adminLogin">
+    <div style="background:white; padding:30px; border-radius:20px; text-align:center; border:1.5px solid var(--borde);">
+        <h4>Acceso Admin</h4><br>
+        <input class="field-input" type="password" id="loginInput" placeholder="Contraseña" style="text-align:center;">
+        <button class="primary-btn" onclick="doLogin()">Entrar</button><br><br>
+        <button onclick="hideLogin()" style="background:none; border:none; cursor:pointer; color:gray;">Cerrar</button>
+    </div>
 </div>
 
-<div class="admin-login" id="adminLogin">
-  <div class="login-box">
-    <h4>Acceso Admin</h4><br>
-    <input class="field-input" type="password" id="loginInput" style="text-align:center;"><br><br>
-    <button class="primary-btn" onclick="checkLogin()">Entrar</button>
-  </div>
+<div id="adminPanel">
+    <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+        <h3>Panel Admin ✨</h3>
+        <button class="icon-btn" onclick="location.reload()">Sair</button>
+    </div>
+    <div class="admin-tabs">
+        <div class="admin-tab active" onclick="switchTab('lista', this)">Productos</div>
+        <div class="admin-tab" onclick="switchTab('nuevo', this)">+ Nuevo</div>
+    </div>
+
+    <div id="tab-lista" class="tab-content">
+        <div id="adminProductList"></div>
+    </div>
+
+    <div id="tab-nuevo" class="tab-content" style="display:none;">
+        <div style="background:white; padding:20px; border-radius:15px; border:1.5px solid var(--borde);">
+            <div class="foto-preview-wrap" id="newPrev">📦</div>
+            <button class="icon-btn" onclick="document.getElementById('fileNew').click()">📷 Seleccionar Foto</button>
+            <input type="file" id="fileNew" style="display:none" onchange="procFile(this, 'new')">
+            <br><br>
+            <input class="field-input" id="newName" placeholder="Nombre del producto">
+            <input class="field-input" id="newPrice" placeholder="Precio (ej: $35.000)">
+            <button class="primary-btn" id="btnSave" onclick="saveNew()">Guardar Producto ✓</button>
+        </div>
+    </div>
 </div>
 
 <div class="toast" id="toast"></div>
@@ -150,129 +122,102 @@ const firebaseConfig = {apiKey:"AIzaSyCf5mRoSSQBSn88QgOaEwGsgY5hyIjqKXI",authDom
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const PASS = 'marleny2025';
-let products = [], newProdImg = '', editProdImg = '';
+
+let products = [], imgNew = '', imgEdit = '';
 
 async function init(){
-  db.collection('productos').orderBy('order','desc').onSnapshot(snap => {
-    products = snap.docs.map(d => ({id:d.id, ...d.data()}));
-    renderCatalog(); renderAdminList();
-  });
+    db.collection('productos').orderBy('order','desc').onSnapshot(snap => {
+        products = snap.docs.map(d => ({id:d.id, ...d.data()}));
+        renderCatalog(); renderAdmin();
+    });
 }
 
-function compressImage(file, cb) {
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = e => {
-    const img = new Image();
-    img.src = e.target.result;
-    img.onload = () => {
-      const canvas = document.createElement('canvas');
-      const maxW = 500;
-      const scale = maxW / img.width;
-      canvas.width = maxW; canvas.height = img.height * scale;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      cb(canvas.toDataURL('image/jpeg', 0.7));
-    };
-  };
-}
-
-function handlePhoto(input, type, id) {
-  if(input.files[0]) {
-    compressImage(input.files[0], src => {
-      if(type === 'new') {
-        newProdImg = src;
-        document.getElementById('newProdPreview').innerHTML = `<img src="${src}">`;
-      } else {
-        editProdImg = src;
-        document.getElementById('editPrev-'+id).innerHTML = `<img src="${src}">`;
-      }
-    });
-  }
+function procFile(input, type, id){
+    if(!input.files[0]) return;
+    const reader = new FileReader();
+    reader.readAsDataURL(input.files[0]);
+    reader.onload = e => {
+        const img = new Image();
+        img.src = e.target.result;
+        img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const max = 500;
+            const ratio = max / img.width;
+            canvas.width = max; canvas.height = img.height * ratio;
+            canvas.getContext('2d').drawImage(img,0,0,max,canvas.height);
+            const final = canvas.toDataURL('image/jpeg', 0.7);
+            if(type==='new'){ imgNew=final; document.getElementById('newPrev').innerHTML=`<img src="${final}">`; }
+            else { imgEdit=final; document.getElementById('editPrev-'+id).innerHTML=`<img src="${final}">`; }
+        };
+    };
 }
 
 function renderCatalog(){
-  const grid = document.getElementById('productsGrid');
-  grid.innerHTML = products.filter(p => p.active).map(p => `
-    <div class="product-card">
-      <div class="product-img-wrap">${p.img?`<img src="${p.img}">`:'📦'}</div>
-      <div class="product-body">
-        <div class="product-name">${p.name}</div>
-        <div class="product-price">${p.price || 'Consultar'}</div>
-        <button class="add-btn" onclick="showToast('Agregado')">+ Agregar</button>
-      </div>
-    </div>`).join('');
+    const grid = document.getElementById('productsGrid');
+    grid.innerHTML = products.filter(p=>p.active).map(p => `
+        <div class="product-card">
+            <div class="product-img-wrap">${p.img?`<img src="${p.img}">`:'📦'}</div>
+            <div class="product-body">
+                <div class="product-name">${p.name}</div>
+                <div class="product-price">${p.price || 'Consultar'}</div>
+                <button class="add-btn" onclick="msg('Agregado')">+ Agregar</button>
+            </div>
+        </div>`).join('');
 }
 
-function renderAdminList(){
-  document.getElementById('adminProductList').innerHTML = products.map(p => `
-    <div class="admin-product-item">
-      <div class="item-top">
-        <div class="item-thumb">${p.img?`<img src="${p.img}">`:'📦'}</div>
-        <div class="item-info"><strong>${p.name}</strong><br><small>${p.price}</small></div>
-        <div class="item-actions">
-          <button class="toggle-sw ${p.active?'on':''}" onclick="toggleActive('${p.id}',${p.active})"></button>
-          <button class="icon-btn" onclick="toggleEdit('${p.id}')">✏️</button>
-          <button class="icon-btn" style="color:red" onclick="deleteProd('${p.id}')">✕</button>
-        </div>
-      </div>
-      <div class="item-edit-form" id="editForm-${p.id}">
-        <div class="field-full">
-          <div class="foto-upload">
-            <div class="foto-preview-wrap" id="editPrev-${p.id}">${p.img?`<img src="${p.img}">`:'📦'}</div>
-            <button class="foto-btn" onclick="document.getElementById('editFile-${p.id}').click()">Cambiar Foto</button>
-            <input type="file" id="editFile-${p.id}" style="display:none" onchange="handlePhoto(this,'edit','${p.id}')">
-          </div>
-        </div>
-        <div class="field-full"><label class="field-label">Nombre</label><input class="field-input" id="editName-${p.id}" value="${p.name}"></div>
-        <div class="field-row">
-          <input class="field-input" id="editPrice-${p.id}" value="${p.price}">
-          <button class="primary-btn" onclick="updateProd('${p.id}')">Actualizar ✓</button>
-        </div>
-      </div>
-    </div>`).join('');
+function renderAdmin(){
+    document.getElementById('adminProductList').innerHTML = products.map(p => `
+        <div class="admin-product-item">
+            <div style="display:flex; align-items:center; gap:10px;">
+                <div style="width:40px;height:40px;border-radius:8px;overflow:hidden;background:#eee;">${p.img?`<img src="${p.img}" style="width:100%;height:100%;object-fit:cover;">`:'📦'}</div>
+                <div style="flex:1; font-size:13px;"><b>${p.name}</b></div>
+                <button class="icon-btn" onclick="document.getElementById('edit-${p.id}').classList.toggle('open')">✏️</button>
+                <button class="icon-btn" onclick="tog('${p.id}',${p.active})">${p.active?'✅':'❌'}</button>
+            </div>
+            <div class="item-edit-form" id="edit-${p.id}">
+                <div class="foto-preview-wrap" id="editPrev-${p.id}">${p.img?`<img src="${p.img}">`:'📦'}</div>
+                <button class="icon-btn" onclick="document.getElementById('file-${p.id}').click()">Cambiar Foto</button>
+                <input type="file" id="file-${p.id}" style="display:none" onchange="procFile(this,'edit','${p.id}')">
+                <br><br>
+                <input class="field-input" id="en-${p.id}" value="${p.name}">
+                <input class="field-input" id="ep-${p.id}" value="${p.price}">
+                <button class="primary-btn" onclick="upd('${p.id}')">Actualizar</button>
+                <button onclick="del('${p.id}')" style="margin-top:10px; color:red; background:none; border:none; cursor:pointer; font-size:11px;">Eliminar Producto</button>
+            </div>
+        </div>`).join('');
 }
 
-function toggleEdit(id){ 
-  const form = document.getElementById('editForm-'+id);
-  form.classList.toggle('open');
-  editProdImg = ''; // Reset temporal al abrir
+async function saveNew(){
+    const n = document.getElementById('newName').value;
+    if(!n) return alert('Falta nombre');
+    const b = document.getElementById('btnSave'); b.disabled=true;
+    await db.collection('productos').add({ name:n, price:document.getElementById('newPrice').value, img:imgNew, active:true, order:Date.now() });
+    document.getElementById('newName').value=''; imgNew=''; document.getElementById('newPrev').innerHTML='📦';
+    b.disabled=false; switchTab('lista', document.querySelectorAll('.admin-tab')[0]);
 }
 
-async function updateProd(id){
-  const name = document.getElementById('editName-'+id).value;
-  const price = document.getElementById('editPrice-'+id).value;
-  const updateData = { name, price };
-  if(editProdImg) updateData.img = editProdImg;
-  
-  await db.collection('productos').doc(id).update(updateData);
-  showToast('Actualizado');
+async function upd(id){
+    const data = { name: document.getElementById('en-'+id).value, price: document.getElementById('ep-'+id).value };
+    if(imgEdit) data.img = imgEdit;
+    await db.collection('productos').doc(id).update(data);
+    imgEdit=''; msg('Actualizado');
 }
 
-async function saveNewProduct(){
-  const name = document.getElementById('newName').value;
-  if(!name) return alert('Pon un nombre');
-  await db.collection('productos').add({
-    name, price: document.getElementById('newPrice').value,
-    img: newProdImg, active: true, order: Date.now()
-  });
-  document.getElementById('newName').value = ''; newProdImg = '';
-  document.getElementById('newProdPreview').innerHTML = '📦';
-  switchTab('productos', document.querySelector('.admin-tab'));
-}
+async function tog(id,v){ await db.collection('productos').doc(id).update({active:!v}); }
+async function del(id){ if(confirm('¿Borrar?')) await db.collection('productos').doc(id).delete(); }
 
-async function toggleActive(id, val){ await db.collection('productos').doc(id).update({active: !val}); }
-async function deleteProd(id){ if(confirm('¿Borrar?')) await db.collection('productos').doc(id).delete(); }
+function showLogin(){ document.getElementById('adminLogin').classList.add('active'); document.getElementById('catalogoView').classList.add('hidden'); }
+function hideLogin(){ document.getElementById('adminLogin').classList.remove('active'); document.getElementById('catalogoView').classList.remove('hidden'); }
+function doLogin(){ if(document.getElementById('loginInput').value===PASS){ document.getElementById('adminLogin').classList.remove('active'); document.getElementById('adminPanel').classList.add('active'); } else alert('Error'); }
 
-function openAdminLogin(){ document.getElementById('adminLogin').classList.add('open'); }
-function checkLogin(){ if(document.getElementById('loginInput').value === PASS) { document.getElementById('adminLogin').classList.remove('open'); document.getElementById('catalogoView').classList.add('hidden'); document.getElementById('adminPanel').classList.add('active'); } }
-function exitAdmin(){ location.reload(); }
 function switchTab(t, el){
-  document.querySelectorAll('.admin-tab').forEach(x => x.classList.remove('active'));
-  document.querySelectorAll('.admin-tab-content').forEach(x => x.classList.remove('active'));
-  el.classList.add('active'); document.getElementById('tab-'+t).classList.add('active');
+    document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));
+    document.getElementById('tab-lista').style.display='none';
+    document.getElementById('tab-nuevo').style.display='none';
+    el.classList.add('active'); document.getElementById('tab-'+t).style.display='block';
 }
-function showToast(m){ const t=document.getElementById('toast'); t.innerText=m; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2000); }
+
+function msg(m){ const t=document.getElementById('toast'); t.innerText=m; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2000); }
 
 init();
 </script>
